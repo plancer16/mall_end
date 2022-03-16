@@ -16,7 +16,7 @@ func TestUserRegister(t *testing.T) {
 	router := gin.Default()
 	user := model.User{
 		UserId:    "1285",
-		NickName:  "qweowq",
+		NickName:  "asdasda",
 		Mobile:    "18751803321",
 		Password:  "qwe",
 		Address:   "xuanwu",
