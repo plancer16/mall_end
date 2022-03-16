@@ -12,7 +12,7 @@ type UserRepo struct {
 
 func (repo *UserRepo) Exist(user model.User) *model.User {
 	var count int
-	repo.DB.Find(&user).Where("nick_name=?", user.NickName).Count(&count)
+	repo.DB.Model(&model.User{}).Where("nick_name=?", user.NickName).Count(&count)
 	if count > 0 {
 		return &user
 	}

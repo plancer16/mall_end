@@ -33,7 +33,7 @@ func (h *UserHandler) AddUserHandler(c *gin.Context) {
 		c.JSON(http.StatusOK,gin.H{"entity":entity})
 		return
 	}
-	entity.Code = http.StatusOK
+	entity.Code = int(enum.OperateOk)
 	entity.Msg  = enum.OperateOk.String()
 	c.JSON(http.StatusOK,gin.H{"entity":entity})
 }
