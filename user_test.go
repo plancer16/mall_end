@@ -1,4 +1,4 @@
-package test
+package main
 
 import (
 	"bytes"
@@ -14,9 +14,10 @@ import (
 
 func TestUserRegister(t *testing.T) {
 	router := gin.Default()
+	router.POST("/api/user/add", UserHandler.AddUserHandler)//服务器增加处理器
 	user := model.User{
 		UserId:    "1285",
-		NickName:  "asdasda",
+		NickName:  "eqeq",
 		Mobile:    "18751803321",
 		Password:  "qwe",
 		Address:   "xuanwu",
@@ -29,7 +30,7 @@ func TestUserRegister(t *testing.T) {
 	s := string(marshal)
 	buffer := bytes.NewBufferString(s)
 	w := httptest.NewRecorder()
-	req, _ := http.NewRequest(http.MethodPost, "http://127.0.0.1:8080/api/user/add", buffer)
+	req, _ := http.NewRequest(http.MethodPost, "/api/user/add", buffer)
 	req.Header.Add("content-type", "application/json")
 	router.ServeHTTP(w,req)
 	assert.Equal(t,w.Code,http.StatusOK)
